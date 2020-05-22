@@ -12,86 +12,85 @@
     <script>
         // 初始化
         var vConsole = new VConsole();
-        console.log('Hello world');
+        // console.log('Hello world');
     </script>
     <script type="text/javascript">
-        var appId
-        var timestamp
-        var nonceStr
-        var signature
-        $(document).ready(function () {
-            review()
-        })
-        ;
+        // var appId
+        // var timestamp
+        // var nonceStr
+        // var signature
+        // $(document).ready(function () {
+        //     review()
+        // })
+        // ;
 
-        function review() {
-            $.ajax({
-                type: "GET",
-                url: "https://49.234.239.225:8080/reviewDoc",
-                dataType:"jsonp",
-                data: {},
-                success: function (dataJson) {
-                    $("p#appId").text(dataJson.appId);
-                    $("p#timestamp").text(dataJson.timestamp);
-                    $("p#nonceStr").text(dataJson.nonceStr);
-                    $("p#signature").text(dataJson.signature);
-                    appId = dataJson.appId
-                    timestamp = dataJson.timestamp
-                    nonceStr = dataJson.nonceStr
-                    signature = dataJson.signature
-                },
-            });
-        }
+        // function review() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "https://49.234.239.225:8080/reviewDoc",
+        //         dataType:"jsonp",
+        //         data: {},
+        //         success: function (dataJson) {
+        //             $("p#appId").text(dataJson.appId);
+        //             $("p#timestamp").text(dataJson.timestamp);
+        //             $("p#nonceStr").text(dataJson.nonceStr);
+        //             $("p#signature").text(dataJson.signature);
+        //             appId = dataJson.appId
+        //             timestamp = dataJson.timestamp
+        //             nonceStr = dataJson.nonceStr
+        //             signature = dataJson.signature
+        //         },
+        //     });
+        // }
 
-        function bindClick(str, event, callback) {
-            const ele = document.querySelector(str);
-            const sectionEle = ele.parentNode.parentNode;
-            const apiName = sectionEle.firstElementChild.innerText + '.' + ele.innerText;
-            const hasApi = !!apiName.split('.').reduce((prev, cur) => {
-                if (prev) return prev[cur];
-                return prev;
-            }, window.h5sdk || {});
-            if (hasApi) {
-                ele.addEventListener(event, callback);
-            } else {
-                ele.parentNode.remove();
-            }
-            if (sectionEle.children.length === 1) {
-                sectionEle.remove();
-            }
-        }
+        // function bindClick(str, event, callback) {
+        //     const ele = document.querySelector(str);
+        //     const sectionEle = ele.parentNode.parentNode;
+        //     const apiName = sectionEle.firstElementChild.innerText + '.' + ele.innerText;
+        //     const hasApi = !!apiName.split('.').reduce((prev, cur) => {
+        //         if (prev) return prev[cur];
+        //         return prev;
+        //     }, window.h5sdk || {});
+        //     if (hasApi) {
+        //         ele.addEventListener(event, callback);
+        //     } else {
+        //         ele.parentNode.remove();
+        //     }
+        //     if (sectionEle.children.length === 1) {
+        //         sectionEle.remove();
+        //     }
+        // }
 
-        window.h5sdk.config({
-            appId: appId,
-            timestamp: timestamp,
-            nonceStr: nonceStr,
-            signature: signature,
-            jsApiList: ['biz.util.openDocument']
-        });
+        // window.h5sdk.config({
+        //     appId: appId,
+        //     timestamp: timestamp,
+        //     nonceStr: nonceStr,
+        //     signature: signature,
+        //     jsApiList: ['biz.util.openDocument']
+        // });
 
 
         function clickBt() {
-            alert(10000)
-            window.h5sdk.ready(() => {
-                window.h5sdk.biz.util.openDocument({
-                    url: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
-                    fileType: 'pdf',
-                    method: 'POST',
-                    header: {
-                        'content-type': 'application/json'
-                    },
-                    body: "{x: '', y: ''}",
-                    onSuccess(res) {
-                        console.log('success', res);
-                    },
-                    onProgress: (res) => {
-                        console.log('progress', res);
-                    },
-                    onFail: (err) => {
-                        console.log(err.errorMessage);
-                    }
-                })
+            // window.h5sdk.ready(() => {
+            window.h5sdk.biz.util.openDocument({
+                url: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
+                fileType: 'pdf',
+                method: 'POST',
+                header: {
+                    'content-type': 'application/json'
+                },
+                body: "{x: '', y: ''}",
+                onSuccess(res) {
+                    console.log('success', res);
+                },
+                onProgress: (res) => {
+                    console.log('progress', res);
+                },
+                onFail: (err) => {
+                    console.log(err.errorMessage);
+                }
             })
+            // })
         }
     </script>
 </head>
