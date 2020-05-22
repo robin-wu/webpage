@@ -75,11 +75,9 @@
                 window.h5sdk.biz.util.openDocument({
                     url: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
                     fileType: 'pdf',
-                    method: 'POST',
                     header: {
                         'content-type': 'application/json'
                     },
-                    body: "{x: '', y: ''}",
                     onSuccess(res) {
                         console.log('success', res);
                     },
