@@ -2,96 +2,95 @@
 <html>
 <head>
     <title>index</title>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <script type="text/javascript" src="https://s0.pstatp.com/ee/lark/js_sdk/h5-js-sdk-1.4.6-beta4.js"></script>
+    <script type="text/javascript" src="https://s0.pstatp.com/ee/lark/js_sdk/h5-js-sdk-1.4.6-beta3.js"></script>
     <script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
     <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
 
     <script>
         // 初始化
         var vConsole = new VConsole();
-        // console.log('Hello world');
+        console.log('Hello world');
     </script>
     <script type="text/javascript">
-        // var appId
-        // var timestamp
-        // var nonceStr
-        // var signature
-        // $(document).ready(function () {
-        //     review()
-        // })
-        // ;
+        var appId
+        var timestamp
+        var nonceStr
+        var signature
+        $(document).ready(function () {
+            review()
+        })
+        ;
 
-        // function review() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "https://49.234.239.225:8080/reviewDoc",
-        //         dataType:"jsonp",
-        //         data: {},
-        //         success: function (dataJson) {
-        //             $("p#appId").text(dataJson.appId);
-        //             $("p#timestamp").text(dataJson.timestamp);
-        //             $("p#nonceStr").text(dataJson.nonceStr);
-        //             $("p#signature").text(dataJson.signature);
-        //             appId = dataJson.appId
-        //             timestamp = dataJson.timestamp
-        //             nonceStr = dataJson.nonceStr
-        //             signature = dataJson.signature
-        //         },
-        //     });
-        // }
+        function review() {
+            $.ajax({
+                type: "GET",
+                url: "https://49.234.239.225:5000/reviewDoc",
+                dataType: "jsonp",
+                data: {},
+                success: function (dataJson) {
+                    $("p#appId").text(dataJson.appId);
+                    $("p#timestamp").text(dataJson.timestamp);
+                    $("p#nonceStr").text(dataJson.nonceStr);
+                    $("p#signature").text(dataJson.signature);
+                    appId = dataJson.appId
+                    timestamp = dataJson.timestamp
+                    nonceStr = dataJson.nonceStr
+                    signature = dataJson.signature
+                    window.h5sdk.config({
+                        appId: appId,
+                        timestamp: timestamp,
+                        nonceStr: nonceStr,
+                        signature: signature,
+                        jsApiList: ['biz.util.openDocument']
+                    });
+                },
+            });
+        }
 
-        // function bindClick(str, event, callback) {
-        //     const ele = document.querySelector(str);
-        //     const sectionEle = ele.parentNode.parentNode;
-        //     const apiName = sectionEle.firstElementChild.innerText + '.' + ele.innerText;
-        //     const hasApi = !!apiName.split('.').reduce((prev, cur) => {
-        //         if (prev) return prev[cur];
-        //         return prev;
-        //     }, window.h5sdk || {});
-        //     if (hasApi) {
-        //         ele.addEventListener(event, callback);
-        //     } else {
-        //         ele.parentNode.remove();
-        //     }
-        //     if (sectionEle.children.length === 1) {
-        //         sectionEle.remove();
-        //     }
-        // }
-
-        // window.h5sdk.config({
-        //     appId: appId,
-        //     timestamp: timestamp,
-        //     nonceStr: nonceStr,
-        //     signature: signature,
-        //     jsApiList: ['biz.util.openDocument']
-        // });
+        function bindClick(str, event, callback) {
+            const ele = document.querySelector(str);
+            const sectionEle = ele.parentNode.parentNode;
+            const apiName = sectionEle.firstElementChild.innerText + '.' + ele.innerText;
+            const hasApi = !!apiName.split('.').reduce((prev, cur) => {
+                if (prev) return prev[cur];
+                return prev;
+            }, window.h5sdk || {});
+            if (hasApi) {
+                ele.addEventListener(event, callback);
+            } else {
+                ele.parentNode.remove();
+            }
+            if (sectionEle.children.length === 1) {
+                sectionEle.remove();
+            }
+        }
 
 
         function clickBt() {
-            // window.h5sdk.ready(() => {
-            window.h5sdk.biz.util.openDocument({
-                url: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
-                fileType: 'pdf',
-                method: 'POST',
-                header: {
-                    'content-type': 'application/json'
-                },
-                body: "{x: '', y: ''}",
-                onSuccess(res) {
-                    console.log('success', res);
-                },
-                onProgress: (res) => {
-                    console.log('progress', res);
-                },
-                onFail: (err) => {
-                    console.log(err.errorMessage);
-                }
+            alert(10000)
+            window.h5sdk.ready(() => {
+                window.h5sdk.biz.util.openDocument({
+                    url: 'https://s1.q4cdn.com/806093406/files/doc_downloads/test.pdf',
+                    fileType: 'pdf',
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    body: "{x: '', y: ''}",
+                    onSuccess(res) {
+                        console.log('success', res);
+                    },
+                    onProgress: (res) => {
+                        console.log('progress', res);
+                    },
+                    onFail: (err) => {
+                        console.log(err.errorMessage);
+                    }
+                })
             })
-            // })
         }
     </script>
 </head>
