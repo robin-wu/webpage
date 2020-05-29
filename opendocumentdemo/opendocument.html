@@ -4,19 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>open link</title>
+  <style type="text/css">
+    .item {
+      margin-top: 15px;
+    }
+    .input {
+      width: calc(100% - 40px);
+      line-height: 25px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
   <div>
-    <div onclick="opendocument()">openlink</div>
+    <input id="input_val" class="item input" type="text" />
+    <div class="item" onclick="opendocument()">openlink http</div>
+    <div class="item" onclick="opendocument1()">openlink https</div>
   </div>
   <script src="https://s0.pstatp.com/ee/lark/js_sdk/h5-js-sdk-1.4.6-beta4.js"></script>
   <script src="./vconsole.min.js"></script>
   <script type="text/javascript">
     var vConsole = new VConsole();
     function opendocument () {
+      var url = document.getElementById('input_val').value || 'http://www.feishu.cn';
       window.h5sdk.biz.util.openLink({
-        url: "https://www.feishu.cn",
-        title: "openlink-飞书",
+        url: url,
+        title: "openlink-http",
+        newTab: false
+      })
+    }
+    function opendocument1 () {
+      var url = document.getElementById('input_val').value || 'https://www.feishu.cn';
+      document.getElementById('input_val')
+      window.h5sdk.biz.util.openLink({
+        url: url,
+        title: "openlink-https",
         newTab: false
       })
     }
