@@ -3,35 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>open Document</title>
+  <title>open link</title>
 </head>
 <body>
   <div>
-    <div onclick="opendocument()">打开附件</div>
+    <div onclick="opendocument()">openlink</div>
   </div>
   <script src="https://s0.pstatp.com/ee/lark/js_sdk/h5-js-sdk-1.4.6-beta4.js"></script>
   <script src="./vconsole.min.js"></script>
   <script type="text/javascript">
-  var vConsole = new VConsole();
+    var vConsole = new VConsole();
     function opendocument () {
       window.h5sdk.biz.util.openDocument({
-        url: "https://dtgw-uat.crcloud.com/dtgw/api/",
-        method: "POST",
-        body: '{"REQUEST": {"REQUEST_DATA": {"BUS_DATA": "eyJtZXRob2QiOiJkb3dubG9hZEF0dGFjaG1lbnQiLCJ1c2VyaWQiOiJjeWQiLCJpdGVtSWQiOiJBQU1rQURoa05EVmxORGxqTFRnMFpERXRORFpqWkMxaVlqazNMVGM1TmpNNU4yRmpZV1prTndCR0FBQUFBQUR6OWs4cGRMVmpTYnBocWdGcThzT0VCd0FZaXdlK3paZTdUSURQY0hNQjZ3aGJBQUFBQUFFTUFBQ2JQa1cyRC9kWVRZZ2trRmdDSWtoQUFBRFFmeDRZQUFBPSIsImF0dGFjaG1lbnRJZCI6IkFBTWtBRGhrTkRWbE5EbGpMVGcwWkRFdE5EWmpaQzFpWWprM0xUYzVOak01TjJGallXWmtOd0JHQUFBQUFBRHo5azhwZExWalNicGhxZ0ZxOHNPRUJ3QVlpd2UrelplN1RJRFBjSE1CNndoYkFBQUFBQUVNQUFDYlBrVzJEL2RZVFlna2tGZ0NJa2hBQUFEUWZ4NFlBQUFCRWdBUUFJZ0FiQ3RTMWRWUGtIVjZOWGEyUkdRPSJ9"}}}',
-        fileType: "xlsx",
-        header: {
-          "content-type":"application/json",
-          "s-crc-ds-codes":"run_email_downloadAttachment",
-          "s-crc-app-id":"10012",
-          "s-crc-token":"0ed1fe39709f4c9f9e7fe8071fb8f4f1",
-          "s-crc-tpl-code":"EMAP_FILE_DOWN"
-        },
-        onSuccess: res => {
-          console.log(res);
-        },
-        onFail: e => {
-          console.log(e);
-        }
+        url: "https://www.feishu.cn",
+        title: "openlink-飞书",
+        newTab: false
       })
     }
   </script>
